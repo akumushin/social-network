@@ -38,6 +38,7 @@ public class VPageSearchInfo {
 	private String ownerLastName;
 	
 	
+	
 	//page_name
 	@Column(name="page_name")
 	private String pageName;
