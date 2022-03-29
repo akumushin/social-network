@@ -1,4 +1,4 @@
-package com.socialnetwork;
+package com.socialnetwork.manage;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
