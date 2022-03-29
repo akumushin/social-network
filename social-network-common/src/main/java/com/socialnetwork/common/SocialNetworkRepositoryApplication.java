@@ -1,13 +1,13 @@
-package com.socialnetwork;
+package com.socialnetwork.common;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SocialNetworkUserApplication {
+public class SocialNetworkRepositoryApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SocialNetworkUserApplication.class, args);
+		SpringApplication.run(SocialNetworkRepositoryApplication.class, args);
 	}
 
 }
