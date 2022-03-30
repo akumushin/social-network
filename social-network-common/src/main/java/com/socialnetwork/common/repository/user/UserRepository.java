@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -15,17 +16,21 @@ import com.socialnetwork.common.entities.user.UserInfo;
 public interface UserRepository extends JpaRepository<UserInfo, Long> {
 	Optional<UserInfo> findByUsername(String username);
 	
-	@Query("UPDATE #{#entityName} u SET u.enable = true WHERE u.username = ?1")
+	@Modifying
+	@Query("UPDATE #{#entityName} u SET u.isEnabled = true WHERE u.username = :username")
 	void activeByUsername(String username);
 	
-	@Query("UPDATE #{#entityName} u SET u.enable = true WHERE u.id = ?1")
+	@Modifying
+	@Query("UPDATE #{#entityName} u SET u.isEnabled = true WHERE u.id = ?1")
 	void activeById(long id);
 	
-	@Query("UPDATE #{#entityName} u SET u.block = ?2 WHERE u.username = ?1")
+	@Modifying
+	@Query("UPDATE #{#entityName} u SET u.isBlocked = ?2 WHERE u.username = ?1")
 	void blockAndUnblock(String username, boolean status);
-	@Query("UPDATE #{#entityName} u SET u.block = ?2 WHERE u.id = ?1")
+	@Modifying
+	@Query("UPDATE #{#entityName} u SET u.isBlocked = ?2 WHERE u.id = ?1")
 	void blockAndUnblock(long id, boolean status);
-	
+	@Modifying
 	@Query("UPDATE #{#entityName} u SET u.email = ?2 WHERE u.username = ?1")
 	void changeEmail(String username, String email);
 }

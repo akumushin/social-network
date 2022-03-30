@@ -36,9 +36,6 @@ public class VPageSearchInfo {
 	private String ownerFirstName;
 	@Column(name="owner_last_name")
 	private String ownerLastName;
-	
-	
-	
 	//page_name
 	@Column(name="page_name")
 	private String pageName;

@@ -46,6 +46,7 @@ public class UserInfo extends BaseEntity {
 	@Convert(converter = BooleanConvert.class)
 	private boolean isEnabled;
 	
+	@Column(name="is_blocked")
 	@Convert(converter = BooleanConvert.class)
 	private boolean isBlocked;
 	
