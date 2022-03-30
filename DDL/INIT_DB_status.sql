@@ -1,0 +1,1 @@
+DROP TABLE m_status_info;

@@ -1,25 +1,18 @@
-
--- drop foreign key
--- ALTER TABLE m_authenticate_info DROP CONSTRAINT m_authenticate_user_fk;
--- ALTER TABLE t_login_token_info DROP CONSTRAINT t_login_token_user_fk;
--- ALTER TABLE t_forget_password_token_info DROP CONSTRAINT t_forget_password_user_fk;
--- ALTER TABLE t_regist_token_info DROP CONSTRAINT t_regist_token_user_fk;
--- ALTER TABLE h_login_info DROP CONSTRAINT h_login_user_fk;
-
-ALTER TABLE m_authenticate_info DROP FOREIGN KEY m_authenticate_user_fk;
-ALTER TABLE t_login_token_info DROP FOREIGN KEY t_login_token_user_fk;
-ALTER TABLE t_forget_password_token_info DROP FOREIGN KEY t_forget_password_user_fk;
-ALTER TABLE t_regist_token_info DROP FOREIGN KEY t_regist_token_user_fk;
-ALTER TABLE h_login_info DROP FOREIGN KEY h_login_user_fk;
-ALTER TABLE m_user_role_link DROP FOREIGN KEY m_user_role_link_user_fk;
-ALTER TABLE m_user_role_link DROP FOREIGN KEY m_user_role_link_role_fk;
-ALTER TABLE m_role_permission_link DROP FOREIGN KEY m_role_permission_link_role_fk;
-ALTER TABLE m_role_permission_link DROP FOREIGN KEY m_role_permission_link_permission_fk;
-
-
+-- DROP TABLE
+DROP TABLE IF EXISTS m_user_info CASCADE;
+DROP TABLE IF EXISTS m_authenticate_info CASCADE;
+DROP TABLE IF EXISTS t_login_token_info CASCADE;
+DROP TABLE IF EXISTS t_forget_password_token_info CASCADE;
+DROP TABLE IF EXISTS t_regist_token_info CASCADE;
+DROP TABLE IF EXISTS h_login_info CASCADE;
+DROP TABLE IF EXISTS m_permission_info CASCADE;
+DROP TABLE IF EXISTS m_role_info CASCADE;
+DROP TABLE IF EXISTS m_user_role_link CASCADE;
+DROP TABLE IF EXISTS m_role_permission_link CASCADE;
 -- CREATE TABLE
-DROP TABLE IF EXISTS m_user_info;
-CREATE TABLE IF NOT EXISTS m_user_info(
+
+
+CREATE TABLE m_user_info(
     user_id BIGINT PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
     last_name VARCHAR(50),
@@ -34,7 +27,7 @@ CREATE TABLE IF NOT EXISTS m_user_info(
 );
 
 
-DROP TABLE IF EXISTS m_authenticate_info;
+
 CREATE TABLE m_authenticate_info(
     user_id BIGINT,
     history_id INT,
@@ -46,7 +39,7 @@ CREATE TABLE m_authenticate_info(
     PRIMARY KEY(user_id, history_id)
 );
 
-DROP TABLE IF EXISTS t_login_token_info;
+
 CREATE TABLE t_login_token_info(
     token VARCHAR(255) PRIMARY KEY,
     ip_address VARCHAR(15) NOT NULL,
@@ -56,7 +49,7 @@ CREATE TABLE t_login_token_info(
     update_at TIMESTAMP,
     del_at TIMESTAMP
 );
-DROP TABLE IF EXISTS t_forget_password_token_info;
+
 CREATE TABLE t_forget_password_token_info(
     token VARCHAR(255) PRIMARY KEY, 
     user_id BIGINT NOT NULL,
@@ -66,7 +59,7 @@ CREATE TABLE t_forget_password_token_info(
     del_at TIMESTAMP
 );
 
-DROP TABLE IF EXISTS t_regist_token_info;
+
 CREATE TABLE t_regist_token_info(
     token VARCHAR(255) PRIMARY KEY, 
     user_id BIGINT NOT NULL,
@@ -76,7 +69,7 @@ CREATE TABLE t_regist_token_info(
     del_at TIMESTAMP
 );
 
-DROP TABLE IF EXISTS h_login_info;
+
 CREATE TABLE h_login_info(
     ip_address VARCHAR(15),
     user_id BIGINT NOT NULL,
@@ -87,7 +80,7 @@ CREATE TABLE h_login_info(
     PRIMARY KEY(ip_address, access_at)
 );
 
-DROP TABLE IF EXISTS m_permission_info;
+
 CREATE TABLE m_permission_info(
     permission_id INT PRIMARY KEY,
     permission_slug VARCHAR(32),
@@ -97,7 +90,7 @@ CREATE TABLE m_permission_info(
     del_at TIMESTAMP
 );
 
-DROP TABLE IF EXISTS m_role_info;
+
 CREATE TABLE m_role_info(
     role_id INT PRIMARY KEY,
     role_slug VARCHAR(32),
@@ -107,13 +100,13 @@ CREATE TABLE m_role_info(
     del_at TIMESTAMP
 );
 
-DROP TABLE IF EXISTS m_user_role_link;
+
 CREATE TABLE m_user_role_link(
     user_id BIGINT,
     role_id INT,
     PRIMARY KEY(user_id, role_id)
 );
-DROP TABLE IF EXISTS m_role_permission_link;
+
 CREATE TABLE m_role_permission_link(
     role_id INT,
     permission_id INT,
