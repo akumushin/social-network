@@ -8,11 +8,11 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table
+@Table(name="t_sequence_info")
 @Data
 public class TSequenceInfo {
 	@Id
-	@Column(length = 10)
+	@Column(name= "name",length = 10)
 	private String name;
 	@Column(name="current_num")
 	private long currentNum;

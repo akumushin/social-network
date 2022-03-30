@@ -68,11 +68,11 @@ public class VPageSearchInfo {
 	private Integer blockCauseId;
 	//membe_count
 	@Column(name="member_count")
-	private Integer memberCount;
+	private long memberCount;
 	//follow_count
 	@Column(name="follow_count")
-	private Integer followCount;
+	private long followCount;
 	//like_count
 	@Column(name="like_count")
-	private Integer likeCount;
+	private long likeCount;
 }

@@ -19,7 +19,7 @@ import lombok.EqualsAndHashCode;
 
 
 @Entity
-@Table(name = "M_ROLE_INFO")
+@Table(name = "m_role_info")
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class RoleInfo extends BaseEntity {
@@ -29,14 +29,15 @@ public class RoleInfo extends BaseEntity {
 	private static final long serialVersionUID = 1788649198287500155L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="role_id")
 	private Integer id;
-	@Column(length = 32)
+	@Column(name="role_slug",length = 32)
 	private String slug;
-	@Column(length = 32)
+	@Column(name="role_name",length = 32)
 	private String name;
 	
 	@ManyToMany(targetEntity = UserInfo.class)
-	@JoinTable(name = "USERS_ROLES_LINK",
+	@JoinTable(name = "m_user_role_link",
 			joinColumns = @JoinColumn(name = "role_id"),
 			inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private List<UserInfo> users;

@@ -26,7 +26,7 @@ public class AuthenticateInfo extends BaseEntity {
 	private static final long serialVersionUID = 2956338042471354684L;
 	@Id
 	@Column(name="user_id")
-	private Integer userId;
+	private Long userId;
 	
 	@Id
 	@Column(name="history_id")

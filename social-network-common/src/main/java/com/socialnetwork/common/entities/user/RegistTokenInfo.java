@@ -1,6 +1,7 @@
 package com.socialnetwork.common.entities.user;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,7 +33,7 @@ public class RegistTokenInfo extends BaseEntity {
 	private Long userId;
 	
 	@Column(name="token_expired_at",nullable = false)
-	private LocalDate tokenExpiredDate;
+	private LocalDateTime tokenExpiredAt;
 	
 	// relationship
 	@ManyToOne(fetch = FetchType.LAZY)

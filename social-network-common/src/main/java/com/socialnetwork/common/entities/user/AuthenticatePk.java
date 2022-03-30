@@ -14,6 +14,6 @@ public class AuthenticatePk implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Integer userId;
+	private Long userId;
 	private Integer historyId;
 }

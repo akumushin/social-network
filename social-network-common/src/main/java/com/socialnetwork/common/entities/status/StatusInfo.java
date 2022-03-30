@@ -21,7 +21,7 @@ import com.socialnetwork.common.types.StatusType;
 import lombok.Data;
 
 @Data
-@Entity
+//@Entity
 @Table(name = "m_status_info")
 @IdClass(StatusPk.class)
 public class StatusInfo{

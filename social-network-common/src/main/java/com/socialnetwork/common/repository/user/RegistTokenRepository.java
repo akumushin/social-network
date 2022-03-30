@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.socialnetwork.common.entities.user.RegistTokenInfo;
 
 @Repository
-public interface RegistTokenRepository extends JpaRepository<RegistTokenInfo, Long>{
+public interface RegistTokenRepository extends JpaRepository<RegistTokenInfo, String>{
 
 }
