@@ -1,7 +1,3 @@
-drop database social_network_db;
-create database social_network_db;
-use social_network_db
-
 
 -- drop foreign key
 -- ALTER TABLE m_authenticate_info DROP CONSTRAINT m_authenticate_user_fk;
@@ -15,7 +11,13 @@ ALTER TABLE t_login_token_info DROP FOREIGN KEY t_login_token_user_fk;
 ALTER TABLE t_forget_password_token_info DROP FOREIGN KEY t_forget_password_user_fk;
 ALTER TABLE t_regist_token_info DROP FOREIGN KEY t_regist_token_user_fk;
 ALTER TABLE h_login_info DROP FOREIGN KEY h_login_user_fk;
+ALTER TABLE m_user_role_link DROP FOREIGN KEY m_user_role_link_user_fk;
+ALTER TABLE m_user_role_link DROP FOREIGN KEY m_user_role_link_role_fk;
+ALTER TABLE m_role_permission_link DROP FOREIGN KEY m_role_permission_link_role_fk;
+ALTER TABLE m_role_permission_link DROP FOREIGN KEY m_role_permission_link_permission_fk;
 
+
+-- CREATE TABLE
 DROP TABLE IF EXISTS m_user_info;
 CREATE TABLE IF NOT EXISTS m_user_info(
     user_id BIGINT PRIMARY KEY,
@@ -118,7 +120,7 @@ CREATE TABLE m_role_permission_link(
     PRIMARY KEY(role_id, permission_id)
 );
 
--- add foreign key
+-- ADD FOREIGN KEY
 ALTER TABLE m_authenticate_info ADD CONSTRAINT m_authenticate_user_fk
     FOREIGN KEY(user_id) REFERENCES m_user_info (user_id);
 
