@@ -8,12 +8,12 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="t_sequence_info")
+@Table(name="m_sequence_info")
 @Data
-public class TSequenceInfo {
+public class SequenceInfo {
 	@Id
-	@Column(name= "name",length = 10)
-	private String name;
+	@Column(name= "sequence_id",length = 10)
+	private String sequenceId;
 	@Column(name="current_num")
 	private long currentNum;
 	@Column(name="max_num")

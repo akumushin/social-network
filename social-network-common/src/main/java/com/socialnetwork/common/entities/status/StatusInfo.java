@@ -21,7 +21,7 @@ import com.socialnetwork.common.types.StatusType;
 import lombok.Data;
 
 @Data
-//@Entity
+@Entity
 @Table(name = "m_status_info")
 @IdClass(StatusPk.class)
 public class StatusInfo{
@@ -40,23 +40,24 @@ public class StatusInfo{
 	@Column(name = "status_type", nullable = false)
 	@Convert(converter = StatusType.Convert.class)
 	private StatusType statusType;
+	// block_flag
+	@Column(name = "block_flag", nullable = false)
+	@Convert(converter = BooleanConvert.class)
+	private boolean blockFlag;
+	// del_flag
+	@Column(name = "del_flag", nullable = false)
+	@Convert(converter = BooleanConvert.class)
+	private boolean delFlag;
 	// create_at
 	@Column(name = "create_at")
 	private LocalDateTime createAt;
 	// update_at
 	@Column(name = "update_at")
 	private LocalDateTime updateAt;
-	// del_flag
-	@Column(name = "del_flag", nullable = false)
-	@Convert(converter = BooleanConvert.class)
-	private boolean delFlag;
 	// del_at
 	@Column(name = "del_at")
 	private LocalDateTime delAt;
-	// block_flag
-	@Column(name = "block_flag", nullable = false)
-	@Convert(converter = BooleanConvert.class)
-	private boolean blockFlag;
+	
 	// block_at
 	@Column(name = "block_at")
 	private LocalDateTime blockAt;
