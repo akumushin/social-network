@@ -38,17 +38,20 @@ CREATE TABLE m_status_content_like_info(
     PRIMARY KEY(page_id, status_id, content_id, user_id)
 );
 
-ALTER TABLE m_status_info ADD CONSTRAINT m_status_info_page_fk
+ALTER TABLE m_status_info ADD CONSTRAINT m_status_info_block_cause_info_fk 
+    FOREIGN KEY (block_cause_id) REFERENCES m_block_cause_info (block_cause_id);
+
+ALTER TABLE m_status_info ADD CONSTRAINT m_status_info_page_info_fk
     FOREIGN KEY (page_id) REFERENCES m_page_info(page_id);
 
-ALTER TABLE m_status_info ADD CONSTRAINT m_status_info_owner_fk
+ALTER TABLE m_status_info ADD CONSTRAINT m_status_info_owner_info_fk
     FOREIGN KEY(owner_id) REFERENCES m_user_info(user_id);
 
-ALTER TABLE m_status_content_info ADD CONSTRAINT m_status_content_info_status_fk
+ALTER TABLE m_status_content_info ADD CONSTRAINT m_status_content_info_status_info_fk
     FOREIGN KEY(page_id, status_id) REFERENCES m_status_info(page_id, status_id);
 
-ALTER TABLE m_status_content_like_info ADD CONSTRAINT m_status_content_like_info_status_content_fk
+ALTER TABLE m_status_content_like_info ADD CONSTRAINT m_status_content_like_info_status_content_info_fk
     FOREIGN KEY(page_id, status_id, content_id) REFERENCES m_status_content_info(page_id, status_id, content_id);
 
-ALTER TABLE m_status_content_like_info ADD CONSTRAINT m_status_content_like_info_user_fk
+ALTER TABLE m_status_content_like_info ADD CONSTRAINT m_status_content_like_info_user_info_fk
     FOREIGN KEY(user_id) REFERENCES m_user_info(user_id);
